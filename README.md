@@ -44,3 +44,17 @@ Unlike simple extrusion, this exercise constructs LineString geometries whose co
 4. Is spatial analysis occurring at this stage?
 
 - At this stage, we are not yet performing spatial analysis. We are only reading data and information from the source. We have not yet generated new data, insight or analysis from the input datasets.
+
+### 3D Elevation Sampling and LINESTRINGZ Construction
+
+1. Why densification is necessary?
+
+- Densification is necessary to increase the resolution of elevation data when reconstructing the road segments with elevation data. Without densification the resolution of the elevation data of the road segments will just be dependent on the vertices of the road segments which are typically few and far between. With Densification we can control the resolution of sampling the elevation data to a fixed distance interval.
+
+2. Why CRS alignment must happen before sampling
+
+- We need to make sure that the CRS of the road segments and the DEM file aligns before sampling so that the elevation data that we collect for the point in our road segment is the exact elevation data that is stored in the DEM.
+
+3. What it means that geometry now contains Z values (not symbolic extrusion)
+
+- Having Z value in a geospatial data geometry means that we can map the spatial data not only in relation to the latitude and logitude of the earth but also in relation to its height from the sea level.
