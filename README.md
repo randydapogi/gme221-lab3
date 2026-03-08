@@ -58,3 +58,25 @@ Unlike simple extrusion, this exercise constructs LineString geometries whose co
 3. What it means that geometry now contains Z values (not symbolic extrusion)
 
 - Having Z value in a geospatial data geometry means that we can map the spatial data not only in relation to the latitude and logitude of the earth but also in relation to its height from the sea level.
+
+### Export 3D GeoJSON
+
+1. What is preserved when you export 3D geometry to GeoJSON?
+
+- When we exported the 3D geometry to GeoJSON the geometry data with Z axis is preserved.
+
+2. What is lost or not formally expressed?
+
+- The CRS information of the geometry is lost.
+
+3. Why does GeoJSON still label the geometry as "LineString" even when Z exists? What does this tell you about the difference between data content and data standard?
+
+- GeoJSON format was designed to render spatial data to web browsers with the required field for coordinates being the latitude and longitude with elevation being an optional field. This tells us that spatial data can be represented in different data contents or format from the standards set in OGR.
+
+4. How does this affect visualization in QGIS 3D View? Does QGIS treat this as true 3D geometry or as 2.5D visualization?
+
+- Since GeoJSON only contains x,y,z of the geometry, QGIS treats the geojson of roads as a 2.5D visualization rather than a 3D geometry.
+
+5. If you had to preserve 3D semantics more explicitly, what alternative output formats would you consider?
+
+- Storing the roads_3d_gdf dataframe to a PostGIS database, a Shapefile or a GeoPackage would have stored the CRS information of the roads data.
